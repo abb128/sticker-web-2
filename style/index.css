@@ -1,0 +1,375 @@
+* {
+	font-family: 'Roboto', sans-serif
+}
+
+body {
+	margin: 0
+}
+
+h1 {
+	font-size: 1rem
+}
+
+:root {
+	--stickers-per-row: 4;
+	--padding: 0.75rem;
+	--padding2: calc(var(--padding) * 2);
+	--sticker-size: calc(100vw / var(--stickers-per-row) - var(--padding2)/var(--stickers-per-row));
+	
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; 
+	
+	--accent: #ca7896;
+}
+
+main {
+	color: var(--text-color)
+}
+
+main.spinner {
+	margin-top: 5rem
+}
+
+main.error,
+main.empty {
+	margin: 2rem
+}
+
+main.empty {
+	text-align: center
+}
+
+main.has-content {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	display: grid;
+	grid-template-rows: calc(12vw + 2px) auto
+}
+
+main.theme-light {
+	--highlight-color: #f4f4f4;
+	--text-color: #b3b3b3;
+	--secondary-background: #f7f7f7;
+	background-color: white;
+}
+
+main.theme-dark {
+	--highlight-color: #34353d;
+	--text-color: #6c7278;
+	--secondary-background: #17191f;
+	background-color: #22262e
+}
+
+main.theme-black {
+	--highlight-color: #222;
+	--text-color: #6c7278;
+	--secondary-background: #181818;
+	background-color: black
+}
+
+.icon {
+	width: 100%;
+	height: 100%;
+	background-color: var(--text-color);
+	mask-size: contain;
+	-webkit-mask-size: contain;
+	mask-image: var(--icon-image);
+	-webkit-mask-image: var(--icon-image);
+	-webkit-mask-repeat: no-repeat;
+}
+
+.icon.icon-settings {
+	--icon-image: url(../res/settings.svg);
+	margin: 20% !important
+}
+
+.icon.icon-recent {
+	--icon-image: url(../res/recent.svg);
+	margin: 20% !important
+}
+
+nav {
+	display: flex;
+	overflow-x: auto;
+	
+	background-color: var(--secondary-background);
+	
+	overflow-y: hidden;
+	
+
+}
+
+main>nav {
+	bottom: 0px;
+    position: absolute;
+    z-index: 2;
+    width: 100%;
+	margin: 0;
+}
+
+nav>nav {
+	margin-left: 4px;
+	margin-right: 4px;
+}
+
+nav>a {
+	border-bottom: 0.5vw solid transparent
+}
+
+nav>a.visible {
+	border-bottom-color: var(--accent);
+}
+
+nav>a>div.sticker {
+	width: 12vw;
+	height: 12vw
+}
+
+div.pack-list,
+nav {
+	scrollbar-width: none
+}
+
+div.pack-list::-webkit-scrollbar,
+nav::-webkit-scrollbar {
+	display: none
+}
+
+div.pack-list {
+	overflow-y: auto;
+	height: 100vh;
+}
+
+div.pack-list.ios-safari-hack {
+	position: fixed;
+	top: calc(12vw + 2px);
+	bottom: 0;
+	left: 0;
+	right: 0;
+	-webkit-overflow-scrolling: touch
+}
+
+section.stickerpack {
+	margin-top: var(--padding2);
+}
+
+section.stickerpack>div.sticker-list {
+	display: flex;
+	flex-wrap: wrap;
+	margin: var(--padding) var(--padding) var(--padding) var(--padding);
+}
+
+section.stickerpack>h1 {
+	margin: 0 0 0 var(--padding2);
+}
+
+div.sticker {
+	display: flex;
+	padding: 4px;
+	cursor: pointer;
+	position: relative;
+	width: var(--sticker-size);
+	height: var(--sticker-size);
+	box-sizing: border-box;
+	
+	transition: background-color 0.15s;
+	border-radius: 6px;
+}
+
+div.sticker:hover {
+	background-color: var(--highlight-color);
+	transition: background-color 0.02s;
+}
+
+div.sticker>div {
+	display: none;
+	width: 100%;
+	object-fit: contain;
+	
+	background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+div.sticker>div.visible {
+	display: initial
+}
+
+div.sticker>.icon {
+	width: 70%;
+	height: 70%;
+	margin: 15%
+}
+
+div.settings-list {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 20vw;
+}
+
+div.settings-list>* {
+	margin: .5rem
+}
+
+div.settings-list button {
+	padding: .5rem;
+	border-radius: .25rem
+}
+
+div.settings-list input {
+	width: 100%
+}
+
+fadel {
+    display: block;
+    position: absolute;
+    min-width: 100px;
+    margin-right: -100px;
+    height: 100%;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--secondary-background) 100%);
+    z-index: 1;
+}
+
+fader {
+    display: block;
+    position: absolute;
+    min-width: 100px;
+    margin-right: -100px;
+    height: 100%;
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0), var(--secondary-background) 100%);
+    z-index: 1;
+}
+
+button {
+	background-color: var(--highlight-color);
+    color: var(--text-color);
+    border: none;
+}
+
+select {
+    color: var(--text-color);
+    background-color: var(--highlight-color);
+    border: none;
+    border-radius: 4px;
+    padding: 4px;
+}
+
+
+
+
+
+
+
+
+
+
+input[type=range] {
+  height: 38px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  background-color: transparent;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: var(--highlight-color);
+  border-radius: 5px;
+}
+input[type=range]::-webkit-slider-thumb {
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: var(--text-color);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: var(--highlight-color);
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: var(--highlight-color);
+  border-radius: 5px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: var(--highlight-color);
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: var(--highlight-color);
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: var(--highlight-color);
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: var(--highlight-color);
+}
+
+
+.overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	background-color: #000000ad;
+	opacity: 0;
+	z-index: 4;
+	pointer-events: none;
+	transition: opacity 0.1s;
+}
+
+.overlay-active {
+	opacity: 1;
+}
+
+.overlay>.sticker{
+	width:75%;
+	height:75%;
+	margin:12.5%
+}
+
+.stickerbody{
+	width: 100%;
+	text-align: center;
+	font-size: 5vh;
+}
+
+.noscroll {
+	overflow-y: hidden !important;
+}

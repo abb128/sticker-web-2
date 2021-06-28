@@ -1,0 +1,9 @@
+{
+  "homeserver_url": "https://api.mau.chat",
+  "packs": [
+    "pusheen02.json",
+    "hdm.json",
+    "scalar-loading_artist.json",
+    "scalar-rabbit.json"
+  ]
+}
